@@ -8,9 +8,11 @@ window._ = require('lodash');
 
 try {
     window.Popper = require('popper.js').default;
+    window.M = require('materialize-css')
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+
 } catch (e) {}
 
 /**

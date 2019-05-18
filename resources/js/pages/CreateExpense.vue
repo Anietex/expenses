@@ -18,5 +18,8 @@
     }
 </script>
 <style scoped>
+    .expense-form{
+        margin-top: 30px;
+    }
 
 </style>

@@ -20,7 +20,7 @@
                       </div>
                   </div>
                   <div class="row">
-                      <div class="col s2 offset-s10">
+                      <div class="col s3 offset-s9">
                           <button class="btn waves-effect waves-light" type="submit" name="action">Save Expense
                               <i class="material-icons right">send</i>
                           </button>

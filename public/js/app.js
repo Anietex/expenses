@@ -1883,7 +1883,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ExpensesListComponent"
+  name: "ExpensesListComponent",
+  props: ['expenses']
 });
 
 /***/ }),
@@ -1974,6 +1975,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     ExpenseFormComponent: _components_expenses_ExpenseFormComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {},
+  methods: {
+    addExpense: function addExpense(expense) {
+      axios.post('');
+    }
   }
 });
 
@@ -2004,6 +2011,25 @@ __webpack_require__.r(__webpack_exports__);
   name: "Expenses",
   components: {
     ExpensesListComponent: _components_expenses_ExpensesListComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      expenses: []
+    };
+  },
+  methods: {
+    fetchExpenses: function fetchExpenses() {
+      var _this = this;
+
+      this.$http.get('/expenses').then(function (_ref) {
+        var data = _ref.data;
+        console.log(data.data);
+        _this.expenses = data.data;
+      });
+    }
+  },
+  created: function created() {
+    this.fetchExpenses();
   }
 });
 
@@ -50595,38 +50621,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "expenses-table" }, [
+    _c("table", [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.expenses, function(expense, index) {
+          return _c("tr", [
+            _c("td", [_vm._v(_vm._s(index + 1))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(expense.expense_date))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(expense.value))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(expense.reason))])
+          ])
+        }),
+        0
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "expenses-table" }, [
-      _c("table", [
-        _c("thead", [
-          _c("tr", [
-            _c("th", [_vm._v("S/N")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Date")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Value (+VAT)")]),
-            _vm._v(" "),
-            _c("th", [_vm._v("Reason")])
-          ])
-        ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("S/N")]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v("1")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Jun 12, 2019")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("7000")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Some random expenses")])
-          ])
-        ])
+        _c("th", [_vm._v("Date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Value (+VAT)")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Reason")])
       ])
     ])
   }
@@ -50782,7 +50812,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "expenses" }, [
     _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "list" }, [_c("ExpensesListComponent")], 1)
+      _c(
+        "div",
+        { staticClass: "list" },
+        [_c("ExpensesListComponent", { attrs: { expenses: _vm.expenses } })],
+        1
+      )
     ])
   ])
 }
@@ -65650,11 +65685,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _pages_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/App */ "./resources/js/pages/App.vue");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./router */ "./resources/js/router.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 
 
 
@@ -65680,6 +65718,10 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+var http = axios__WEBPACK_IMPORTED_MODULE_4___default.a.create({
+  baseURL: 'http://expenses.test/api/'
+});
+Vue.prototype.$http = http;
 var app = new Vue({
   el: '#app',
   render: function render(h) {
@@ -66415,8 +66457,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/macbook/Projects/expenses-manager/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/macbook/Projects/expenses-manager/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/macbook/Sites/expenses/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/macbook/Sites/expenses/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

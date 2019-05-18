@@ -10,11 +10,11 @@
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Jun 12, 2019</td>
-                    <td>7000</td>
-                    <td>Some random expenses</td>
+                <tr v-for="(expense,index) in expenses">
+                    <td>{{index+1}}</td>
+                    <td>{{expense.expense_date}}</td>
+                    <td>{{expense.value}}</td>
+                    <td>{{expense.reason}}</td>
                 </tr>
             </tbody>
         </table>
@@ -23,7 +23,8 @@
 
 <script>
     export default {
-        name: "ExpensesListComponent"
+        name: "ExpensesListComponent",
+        props:['expenses']
     }
 </script>
 

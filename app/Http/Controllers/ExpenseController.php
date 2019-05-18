@@ -47,12 +47,10 @@ class ExpenseController extends Controller
     public function store(ExpenseRequest $request)
     {
 
-
         /*
          * I wrapped round between try catch because currency converter might
          * throw an http exception
          */
-
        try{
            $expense = new Expense();
 
@@ -89,7 +87,10 @@ class ExpenseController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $expense = Expense::find($id);
+
+        return $this->success($expense);
     }
 
     /**

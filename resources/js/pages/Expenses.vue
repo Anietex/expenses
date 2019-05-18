@@ -2,7 +2,7 @@
     <div class="expenses">
         <div class="container">
             <div class="list">
-                <ExpensesListComponent></ExpensesListComponent>
+                <ExpensesListComponent :expenses="expenses"></ExpensesListComponent>
             </div>
         </div>
     </div>
@@ -12,7 +12,23 @@
     import ExpensesListComponent from "../components/expenses/ExpensesListComponent";
     export default {
         name: "Expenses",
-        components: {ExpensesListComponent}
+        components: {ExpensesListComponent},
+        data:()=>({
+           expenses:[],
+        }),
+        methods:{
+            fetchExpenses(){
+                this.$http.get('/expenses')
+                    .then(({data})=>{
+                        console.log(data.data)
+                        this.expenses = data.data;
+                    })
+            }
+        },
+
+        created() {
+            this.fetchExpenses();
+        }
     }
 </script>
 

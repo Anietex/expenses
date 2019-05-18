@@ -14,7 +14,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/','index');
+Route::view('{path}','index')->where('path','.*');
 
 
 //Route::get('/', function () {

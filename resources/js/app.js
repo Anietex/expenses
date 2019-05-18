@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import VueRouter from 'vue-router';
 import App from "./pages/App";
 import router from './router'
+import  axios from "axios";
 
 require('./bootstrap');
 
@@ -30,6 +31,12 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+const http = axios.create({
+    baseURL: 'http://expenses.test/api/',
+});
+
+Vue.prototype.$http = http;
+
 
 const app = new Vue({
     el: '#app',

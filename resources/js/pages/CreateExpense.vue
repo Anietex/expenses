@@ -13,8 +13,21 @@
 </template>
 <script>
     import ExpenseFormComponent from "../components/expenses/ExpenseFormComponent";
+
+
     export default {
-        components: {ExpenseFormComponent}
+        components: {ExpenseFormComponent},
+
+        data:()=>{
+
+        },
+        methods:{
+
+            addExpense(expense){
+
+                axios.post('')
+            }
+        }
     }
 </script>
 <style scoped>

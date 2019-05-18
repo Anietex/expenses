@@ -1,15 +1,23 @@
 <template>
     <div class="expenses">
-
+        <div class="container">
+            <div class="list">
+                <ExpensesListComponent></ExpensesListComponent>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import ExpensesListComponent from "../components/expenses/ExpensesListComponent";
     export default {
-        name: "Expenses"
+        name: "Expenses",
+        components: {ExpensesListComponent}
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+    .list{
+        margin-top: 50px;
+    }
 </style>

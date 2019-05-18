@@ -23,7 +23,7 @@
 
 <script>
     export default {
-        name: "ExpenseTableComponent"
+        name: "ExpensesListComponent"
     }
 </script>
 

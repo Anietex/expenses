@@ -8,6 +8,7 @@ import VueRouter from 'vue-router';
 import App from "./pages/App";
 import router from './router'
 import  axios from "axios";
+import toastr from 'toastr'
 
 require('./bootstrap');
 
@@ -36,6 +37,7 @@ const http = axios.create({
 });
 
 Vue.prototype.$http = http;
+Vue.prototype.$toastr = toastr;
 
 
 const app = new Vue({

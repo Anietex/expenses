@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col m12">
-                        <ExpenseFormComponent/>
+                        <ExpenseFormComponent @formSubmitted="addExpense($event)"/>
                     </div>
                 </div>
             </div>
@@ -18,14 +18,16 @@
     export default {
         components: {ExpenseFormComponent},
 
-        data:()=>{
+        data:()=>({
 
-        },
+        }),
         methods:{
-
             addExpense(expense){
-
-                axios.post('')
+                console.log(expense);
+                this.$http.post('/expenses',expense)
+                    .then(({data})=>{
+                        this.$toastr.success("Expense saved successfully")
+                    })
             }
         }
     }

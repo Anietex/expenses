@@ -3,19 +3,19 @@
         <div class="card">
             <div class="form card-content">
                 <span class="card-title">{{title}}</span>
-              <form>
+              <form @submit.prevent="submitForm">
                   <div class="row">
                       <div class="col l4 input-field">
-                          <input type="text"  id="date" class="datepicker">
+                          <input v-model="expense.date" type="text"  id="date" class="datepicker" required>
                           <label for="date">Date</label>
                       </div>
                       <div class="input-field col l4">
-                          <input  id="Value" type="text" class="validate">
+                          <input  v-model="expense.value" id="Value" type="text" class="validate" required>
                           <label for="value">Value</label>
-                          <span class="helper-text">VAT: {{6}}</span>
+                          <span class="helper-text">VAT: {{parseFloat(expense.value*.2).toFixed(2)}}</span>
                       </div>
                       <div class="input-field col l4">
-                          <input id="reason" type="text" class="validate">
+                          <input v-model="expense.reason" id="reason" type="text" class="validate" required>
                           <label for="reason">Reason for Expense</label>
                       </div>
                   </div>
@@ -42,10 +42,23 @@
                 reason:''
             }
         }),
+        methods:{
+            submitForm(){
+                this.$emit('formSubmitted',this.expense)
+            }
+        },
         props:['title'],
         mounted() {
-            let elems = document.querySelectorAll('.datepicker');
-             M.Datepicker.init(elems);
+            const vm = this;
+            let elems = document.querySelectorAll('.datepicker',);
+             M.Datepicker.init(elems,{
+                 format:'yyyy-mm-dd',
+                 //Due how materialCss is datepicker is implemented date do not get set
+                 //to vue data so i do it manually
+                 onClose(){
+                     vm.expense.date = this.toString()
+                 }
+             });
         }
     }
 </script>

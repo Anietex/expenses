@@ -50605,44 +50605,51 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("nav", [
     _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "nav-wrapper" }, [
-        _c("a", { staticClass: "brand-logo", attrs: { href: "#" } }, [
-          _vm._v("Expenses")
-        ]),
-        _vm._v(" "),
-        _c(
-          "ul",
-          {
-            staticClass: "right hide-on-med-and-down",
-            attrs: { id: "nav-mobile" }
-          },
-          [
-            _c(
-              "li",
-              [
-                _c(
-                  "router-link",
-                  { attrs: { to: { name: "create-expense" } } },
-                  [_vm._v("Create Expense")]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "li",
-              [
-                _c(
-                  "router-link",
-                  { attrs: { to: { name: "list-expenses" } } },
-                  [_vm._v("List Expense")]
-                )
-              ],
-              1
-            )
-          ]
-        )
-      ])
+      _c(
+        "div",
+        { staticClass: "nav-wrapper" },
+        [
+          _c(
+            "router-link",
+            { staticClass: "brand-logo", attrs: { to: { name: "home" } } },
+            [_vm._v("Expenses")]
+          ),
+          _vm._v(" "),
+          _c(
+            "ul",
+            {
+              staticClass: "right hide-on-med-and-down",
+              attrs: { id: "nav-mobile" }
+            },
+            [
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: { name: "create-expense" } } },
+                    [_vm._v("Create Expense")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: { name: "list-expenses" } } },
+                    [_vm._v("List Expense")]
+                  )
+                ],
+                1
+              )
+            ]
+          )
+        ],
+        1
+      )
     ])
   ])
 }
@@ -66305,7 +66312,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 var routes = [{
   path: '/',
   name: 'home',
-  component: _pages_Home__WEBPACK_IMPORTED_MODULE_2__["default"]
+  component: _pages_CreateExpense__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
   path: '/expenses/create',
   name: 'create-expense',
@@ -66316,7 +66323,8 @@ var routes = [{
   component: _pages_Expenses__WEBPACK_IMPORTED_MODULE_4__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  routes: routes
+  routes: routes,
+  mode: 'history'
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 

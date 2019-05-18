@@ -10,7 +10,7 @@ const routes =[
     {
         path:'/',
         name:'home',
-        component:Home
+        component:CreateExpense
     },
     {
         path:'/expenses/create',
@@ -26,7 +26,8 @@ const routes =[
 
 
 const router = new VueRouter({
-    routes
+    routes,
+    mode:'history'
 })
 
 

@@ -1844,6 +1844,14 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     submitForm: function submitForm() {
       this.$emit('formSubmitted', this.expense);
+    },
+    clearFields: function clearFields() {
+      var _this = this;
+
+      Object.keys(this.expense).forEach(function (key) {
+        _this.expense[key] = '';
+      });
+      M.updateTextFields();
     }
   },
   props: ['title'],
@@ -2001,6 +2009,10 @@ __webpack_require__.r(__webpack_exports__);
         var data = _ref.data;
 
         _this.$toastr.success("Expense saved successfully");
+
+        _this.$refs.createExpense.clearFields();
+      })["catch"](function () {
+        _this.$toastr.error("Oops there was an error saving your expenses");
       });
     }
   }
@@ -51346,6 +51358,7 @@ var render = function() {
             { staticClass: "col m12" },
             [
               _c("ExpenseFormComponent", {
+                ref: "createExpense",
                 on: {
                   formSubmitted: function($event) {
                     return _vm.addExpense($event)

@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col m12">
-                        <ExpenseFormComponent @formSubmitted="addExpense($event)"/>
+                        <ExpenseFormComponent ref="createExpense" @formSubmitted="addExpense($event)"/>
                     </div>
                 </div>
             </div>
@@ -13,8 +13,6 @@
 </template>
 <script>
     import ExpenseFormComponent from "../components/expenses/ExpenseFormComponent";
-
-
     export default {
         components: {ExpenseFormComponent},
 
@@ -26,7 +24,11 @@
                 console.log(expense);
                 this.$http.post('/expenses',expense)
                     .then(({data})=>{
-                        this.$toastr.success("Expense saved successfully")
+                        this.$toastr.success("Expense saved successfully");
+                        this.$refs.createExpense.clearFields()
+                    })
+                    .catch(()=>{
+                        this.$toastr.error("Oops there was an error saving your expenses")
                     })
             }
         }

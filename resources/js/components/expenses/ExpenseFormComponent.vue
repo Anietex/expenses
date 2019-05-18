@@ -45,6 +45,12 @@
         methods:{
             submitForm(){
                 this.$emit('formSubmitted',this.expense)
+            },
+            clearFields(){
+                Object.keys(this.expense).forEach((key)=>{
+                    this.expense[key] = ''
+                })
+                M.updateTextFields();
             }
         },
         props:['title'],

@@ -1830,6 +1830,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ExpenseFormComponent",
   data: function data() {
@@ -1840,6 +1845,15 @@ __webpack_require__.r(__webpack_exports__);
         reason: ''
       }
     };
+  },
+  computed: {
+    vat: function vat() {
+      if (!isNaN(this.expense.value)) {
+        return this.expense.value * .20;
+      }
+
+      return 0;
+    }
   },
   methods: {
     submitForm: function submitForm() {
@@ -51064,7 +51078,7 @@ var render = function() {
                       expression: "expense.date"
                     }
                   ],
-                  staticClass: "datepicker",
+                  staticClass: "datepicker validate",
                   attrs: { type: "text", id: "date", required: "" },
                   domProps: { value: _vm.expense.date },
                   on: {
@@ -51077,7 +51091,12 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("label", { attrs: { for: "date" } }, [_vm._v("Date")])
+                _c("label", { attrs: { for: "date" } }, [_vm._v("Date")]),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "helper-text",
+                  attrs: { "data-error": "Select expense date" }
+                })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-field col l4" }, [
@@ -51091,7 +51110,12 @@ var render = function() {
                     }
                   ],
                   staticClass: "validate",
-                  attrs: { id: "Value", type: "text", required: "" },
+                  attrs: {
+                    id: "Value",
+                    type: "text",
+                    pattern: "^\\d+(\\.\\d+)?(EUR)?$",
+                    required: ""
+                  },
                   domProps: { value: _vm.expense.value },
                   on: {
                     input: function($event) {
@@ -51105,12 +51129,10 @@ var render = function() {
                 _vm._v(" "),
                 _c("label", { attrs: { for: "value" } }, [_vm._v("Value")]),
                 _vm._v(" "),
-                _c("span", { staticClass: "helper-text" }, [
-                  _vm._v(
-                    "VAT: " +
-                      _vm._s(parseFloat(_vm.expense.value * 0.2).toFixed(2))
-                  )
-                ])
+                _c("span", {
+                  staticClass: "helper-text",
+                  attrs: { "data-error": "Enter a valid expense amount" }
+                })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-field col l4" }, [
@@ -51138,11 +51160,29 @@ var render = function() {
                 _vm._v(" "),
                 _c("label", { attrs: { for: "reason" } }, [
                   _vm._v("Reason for Expense")
-                ])
+                ]),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "helper-text",
+                  attrs: { "data-error": "Enter reason for expense" }
+                })
               ])
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col s3" }, [
+                _c("h6", [
+                  _vm._v(
+                    "+20% VAT (" +
+                      _vm._s(_vm.vat) +
+                      ") " +
+                      _vm._s(_vm.vat + parseFloat(_vm.expense.value || 0))
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
           ]
         )
       ])
@@ -51154,20 +51194,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col s3 offset-s9" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn waves-effect waves-light",
-            attrs: { type: "submit", name: "action" }
-          },
-          [
-            _vm._v("Save Expense\n                          "),
-            _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
-          ]
-        )
-      ])
+    return _c("div", { staticClass: "col s3 offset-s6" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn waves-effect waves-light",
+          attrs: { type: "submit", name: "action" }
+        },
+        [
+          _vm._v("Save Expense\n                          "),
+          _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
+        ]
+      )
     ])
   }
 ]

@@ -24,8 +24,8 @@ class ExpenseRequest extends FormRequest
     public function rules()
     {
         return [
-           "date"=>"required",
-            "value"=>"required",
+           "date"=>"required|date",
+            "value"=>"required|regex:/^\d+(\.\d+)?(EUR)?$/",
             "reason"=>"required"
         ];
     }

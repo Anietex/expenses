@@ -12,9 +12,9 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
-    public function success(array $data,$status=200){
+    public function success( $data,$status=200){
 
-        return response()->json(["status"=>"success","data"=>$data,$status]);
+        return response()->json(["status"=>"success","data"=>$data],$status);
     }
 
 

@@ -5,30 +5,28 @@
                 <span class="card-title">{{title}}</span>
               <form @submit.prevent="submitForm" >
                   <div class="row">
-                      <div class="col l4 input-field">
+                      <div class="col s12 l4 input-field">
                           <input v-model="expense.date" type="text"  id="date" class="datepicker validate" required>
                           <label for="date">Date</label>
                           <span class="helper-text" data-error="Select expense date" ></span>
                       </div>
-                      <div class="input-field col l4">
-                          <input  v-model="expense.value" id="Value" type="text" class="validate" pattern="^\d+(\.\d+)?(EUR)?$" required>
+                      <div class="input-field col s12 l4">
+                          <input  v-model="expense.value" id="value" type="text" class="validate" pattern="^\d+(\.\d+)?(EUR)?$" required>
                           <label for="value">Value</label>
                           <span class="helper-text" data-error="Enter a valid expense amount" ></span>
                       </div>
-                      <div class="input-field col l4">
+                      <div class="input-field col s12 l4">
                           <input v-model="expense.reason" id="reason" type="text" class="validate" required>
                           <label for="reason">Reason for Expense</label>
                           <span class="helper-text" data-error="Enter reason for expense" ></span>
                       </div>
                   </div>
                   <div class="row">
-                      <div class="col s3">
+                      <div class="col l3">
                           <h6>+20% VAT ({{vat}}) {{vat+parseFloat(expense.value || 0)}}</h6>
                       </div>
-                      <div class="col s3 offset-s6">
-                          <button class="btn waves-effect waves-light" type="submit" name="action">Save Expense
-                              <i class="material-icons right">send</i>
-                          </button>
+                      <div class="col l3 offset-l6">
+                          <button class="btn waves-effect waves-light" type="submit" name="action">Save Expense</button>
                       </div>
                   </div>
               </form>

@@ -1835,8 +1835,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ExpenseFormComponent",
@@ -51072,7 +51070,7 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col l4 input-field" }, [
+              _c("div", { staticClass: "col s12 l4 input-field" }, [
                 _c("input", {
                   directives: [
                     {
@@ -51103,7 +51101,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "input-field col l4" }, [
+              _c("div", { staticClass: "input-field col s12 l4" }, [
                 _c("input", {
                   directives: [
                     {
@@ -51115,7 +51113,7 @@ var render = function() {
                   ],
                   staticClass: "validate",
                   attrs: {
-                    id: "Value",
+                    id: "value",
                     type: "text",
                     pattern: "^\\d+(\\.\\d+)?(EUR)?$",
                     required: ""
@@ -51139,7 +51137,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "input-field col l4" }, [
+              _c("div", { staticClass: "input-field col s12 l4" }, [
                 _c("input", {
                   directives: [
                     {
@@ -51174,7 +51172,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col s3" }, [
+              _c("div", { staticClass: "col l3" }, [
                 _c("h6", [
                   _vm._v(
                     "+20% VAT (" +
@@ -51198,17 +51196,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col s3 offset-s6" }, [
+    return _c("div", { staticClass: "col l3 offset-l6" }, [
       _c(
         "button",
         {
           staticClass: "btn waves-effect waves-light",
           attrs: { type: "submit", name: "action" }
         },
-        [
-          _vm._v("Save Expense\n                          "),
-          _c("i", { staticClass: "material-icons right" }, [_vm._v("send")])
-        ]
+        [_vm._v("Save Expense")]
       )
     ])
   }

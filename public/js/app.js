@@ -1796,6 +1796,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! materialize-css */ "./node_modules/materialize-css/dist/js/materialize.js");
+/* harmony import */ var materialize_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(materialize_css__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1835,6 +1837,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ExpenseFormComponent",
   data: function data() {
@@ -1865,14 +1868,14 @@ __webpack_require__.r(__webpack_exports__);
       Object.keys(this.expense).forEach(function (key) {
         _this.expense[key] = '';
       });
-      M.updateTextFields();
+      materialize_css__WEBPACK_IMPORTED_MODULE_0___default.a.updateTextFields();
     }
   },
   props: ['title'],
   mounted: function mounted() {
     var vm = this;
     var elems = document.querySelectorAll('.datepicker');
-    M.Datepicker.init(elems, {
+    materialize_css__WEBPACK_IMPORTED_MODULE_0___default.a.Datepicker.init(elems, {
       format: 'yyyy-mm-dd',
       //Due how materialCss is datepicker is implemented date do not get set
       //to vue data so i do it manually
@@ -1919,7 +1922,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ExpensesListComponent",
-  props: ['expenses']
+  props: ['expenses'],
+  methods: {
+    calculateVat: function calculateVat(amount) {
+      return amount + amount * .20;
+    }
+  }
 });
 
 /***/ }),
@@ -2011,14 +2019,10 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     ExpenseFormComponent: _components_expenses_ExpenseFormComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  data: function data() {
-    return {};
-  },
   methods: {
     addExpense: function addExpense(expense) {
       var _this = this;
 
-      console.log(expense);
       this.$http.post('/expenses', expense).then(function (_ref) {
         var data = _ref.data;
 
@@ -51237,12 +51241,12 @@ var render = function() {
       _c(
         "tbody",
         _vm._l(_vm.expenses, function(expense, index) {
-          return _c("tr", [
+          return _c("tr", { key: index }, [
             _c("td", [_vm._v(_vm._s(index + 1))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(expense.expense_date))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(expense.value))]),
+            _c("td", [_vm._v(_vm._s(_vm.calculateVat(expense.value)))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(expense.reason))])
           ])

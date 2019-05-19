@@ -15,13 +15,8 @@
     import ExpenseFormComponent from "../components/expenses/ExpenseFormComponent";
     export default {
         components: {ExpenseFormComponent},
-
-        data:()=>({
-
-        }),
         methods:{
             addExpense(expense){
-                console.log(expense);
                 this.$http.post('/expenses',expense)
                     .then(({data})=>{
                         this.$toastr.success("Expense saved successfully");

@@ -38,6 +38,7 @@
 </template>
 
 <script>
+    import M from 'materialize-css'
     export default {
         name: "ExpenseFormComponent",
         data:()=>({

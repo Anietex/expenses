@@ -10,10 +10,10 @@
             </tr>
             </thead>
             <tbody>
-                <tr v-for="(expense,index) in expenses">
+                <tr v-for="(expense,index) in expenses" :key="index">
                     <td>{{index+1}}</td>
                     <td>{{expense.expense_date}}</td>
-                    <td>{{expense.value}}</td>
+                    <td>{{calculateVat(expense.value)}}</td>
                     <td>{{expense.reason}}</td>
                 </tr>
             </tbody>
@@ -24,7 +24,12 @@
 <script>
     export default {
         name: "ExpensesListComponent",
-        props:['expenses']
+        props:['expenses'],
+        methods:{
+            calculateVat(amount){
+                return amount+amount*.20
+            }
+        }
     }
 </script>
 

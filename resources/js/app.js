@@ -32,7 +32,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-let url = document.head.querySelector('meta[name="app-url"]');
+let url = document.head.querySelector('meta[name="api-url"]');
 
 const http = axios.create({
     baseURL: url.content,

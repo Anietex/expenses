@@ -66359,7 +66359,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var url = document.head.querySelector('meta[name="app-url"]');
+var url = document.head.querySelector('meta[name="api-url"]');
 var http = axios__WEBPACK_IMPORTED_MODULE_4___default.a.create({
   baseURL: url.content
 });

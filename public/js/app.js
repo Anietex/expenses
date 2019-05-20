@@ -2027,7 +2027,9 @@ __webpack_require__.r(__webpack_exports__);
         _this.$toastr.success("Expense saved successfully");
 
         _this.$refs.createExpense.clearFields();
-      })["catch"](function () {
+      })["catch"](function (err) {
+        console.log(err);
+
         _this.$toastr.error("Oops there was an error saving your expenses");
       });
     }
@@ -66357,8 +66359,9 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+var url = document.head.querySelector('meta[name="app-url"]');
 var http = axios__WEBPACK_IMPORTED_MODULE_4___default.a.create({
-  baseURL: 'http://expenses.test/api/'
+  baseURL: url.content
 });
 Vue.prototype.$http = http;
 Vue.prototype.$toastr = toastr__WEBPACK_IMPORTED_MODULE_5___default.a;

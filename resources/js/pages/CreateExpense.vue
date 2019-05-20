@@ -22,7 +22,8 @@
                         this.$toastr.success("Expense saved successfully");
                         this.$refs.createExpense.clearFields()
                     })
-                    .catch(()=>{
+                    .catch((err)=>{
+                        console.log(err)
                         this.$toastr.error("Oops there was an error saving your expenses")
                     })
             }

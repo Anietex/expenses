@@ -3,8 +3,12 @@ php:
   - 7.2
   - hhvm
 before_script:
+  - mysql -e 'CREATE DATABASE test_db;'
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
+  - cp .env.example .env
+  - php artisan key:generate
+  - php artisan migrate
 
 script:
   - phpunit

@@ -1,7 +1,7 @@
-#Expense Manager
+# Expense Manager
 
 
-##How to install
+## How to install
 After cloning the repo  copy .env.example to .env, update your database configs then run
 
 `composer install`  
@@ -10,14 +10,14 @@ After cloning the repo  copy .env.example to .env, update your database configs 
 `php artisan migrate`  
 `php artisan serve`
 
-##Tech Stack
+## Tech Stack
 [Laravel](https://laravel.com)  
 [VueJs](https://vuejs.org)  
 [Vue Router](https://router.vuejs.org)
 
-##Resources
+## Resources
 Am using [Free currency converter api](https://free.currencyconverterapi.com/) for currency conversion
 
 
-##Testing
+## Testing
 `composer test`
